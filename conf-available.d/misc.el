@@ -18,6 +18,18 @@
 (tool-bar-mode -1)
 
 
+;;; Configuration of CUA mode
+
+;; Activate CUA mode
+(cua-mode t)
+
+;; Time to delay before overriding prefix key 
+(setq cua-prefix-override-inhibit-delay 0.5)
+
+;; Activate Delete Selection mode
+(delete-selection-mode)
+
+
 ;;; Miscellaneous configurations
 
 ;; Column number in mode line
