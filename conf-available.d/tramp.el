@@ -18,7 +18,7 @@
 					  (car server-names)
 					  "): ")
 				  server-names nil t nil nil server-names))
-	 (port (cadr (alist-get server servers))))
+	 (port (nth 2 (assoc server servers))))
     (call-process "knock" nil nil nil server port)))
 
 (global-set-key (kbd "C-c k") 'knock-remote-server)
