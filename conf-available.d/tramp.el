@@ -24,7 +24,7 @@
 (global-set-key (kbd "C-c k") 'knock-remote-server)
 
 (use-package tramp
-  :defer t
+  :bind ("C-c tc" . tramp-cleanup-all-buffers)
   :config
   (let ((servers (read-server-file)))
     (--each servers (let ((server (car it))
