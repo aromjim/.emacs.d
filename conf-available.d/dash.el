@@ -1,2 +1,2 @@
 (use-package dash
-  :defer t)
+  :commands --each)
