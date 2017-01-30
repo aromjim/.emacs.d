@@ -16,7 +16,7 @@
   (setq TeX-electric-escape t)
 
   ;; Automatically insert the opening and closing symbols for an inline equation
-  (setq TeX-electric-math t)
+  (setq TeX-electric-math '("$" . "$"))
 
   ;; Automatically insert braces for sub and superscripts in math mode
   (setq TeX-electric-sub-and-superscript t)
