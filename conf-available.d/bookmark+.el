@@ -7,4 +7,8 @@
   ;; Sort tagged before untagged bookmarks
   (setq bmkp-sort-comparer '((bmkp-tagged-cp) bmkp-alpha-p))
   ;; Refresh bookmark list when a bookmark is set
-  (bmkp-toggle-bookmark-set-refreshes))
+  (bmkp-toggle-bookmark-set-refreshes)
+  ;; Create and display bookmark list at startup
+  (setq initial-buffer-choice (lambda ()
+				(bookmark-bmenu-list)
+				(get-buffer "*Bookmark List*"))))
