@@ -5,4 +5,12 @@
   (setq ebib-bib-search-dirs '("~/.texmf/bibtex/bib/personal"))
   ;; Bibliographic databases to load on startup
   (setq ebib-preload-bib-files '("Bibliography.bib"))
+  ;; Customization of the automatic generation of keys
+  (setq ebib-autogenerate-keys t
+	bibtex-autokey-names-stretch 1
+	bibtex-autokey-name-separator "_"
+	bibtex-autokey-additional-names "_y_otros"
+	bibtex-autokey-year-length 0
+	bibtex-autokey-titleword-length 'infty
+	bibtex-autokey-year-title-separator ":")
   )
