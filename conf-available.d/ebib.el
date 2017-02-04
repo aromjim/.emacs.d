@@ -7,6 +7,9 @@
   (setq ebib-preload-bib-files '("Bibliography.bib"))
   ;; Biblatex format for bibliographic databases
   (setq ebib-bibtex-dialect 'biblatex)
+  ;; Customization of the table format for index buffer
+  (setq ebib-index-columns
+	(-replace '("Year" 6 t) '("Date" 6 t) ebib-index-columns))
   ;; Customization of the automatic generation of keys
   (setq ebib-autogenerate-keys t
 	bibtex-autokey-names-stretch 1
