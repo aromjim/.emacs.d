@@ -5,6 +5,8 @@
   (setq ebib-bib-search-dirs '("~/.texmf/bibtex/bib/personal"))
   ;; Bibliographic databases to load on startup
   (setq ebib-preload-bib-files '("Bibliography.bib"))
+  ;; Biblatex format for bibliographic databases
+  (setq ebib-bibtex-dialect 'biblatex)
   ;; Customization of the automatic generation of keys
   (setq ebib-autogenerate-keys t
 	bibtex-autokey-names-stretch 1
