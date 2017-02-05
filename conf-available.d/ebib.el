@@ -41,4 +41,6 @@
   (setq ebib-keywords-file "~/.texmf/bibtex/bib/ebib-keywords.txt")
   ;; Keep keyword file sorted and without duplicates
   (setq ebib-keywords-field-keep-sorted t)
+  ;; Major mode for multiline edit buffer
+  (setq ebib-multiline-major-mode 'markdown-mode)
   )
