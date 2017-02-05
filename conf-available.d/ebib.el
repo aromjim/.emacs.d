@@ -26,4 +26,15 @@
   (let ((fields (assq 'biblatex ebib-extra-fields)))
     (setcdr fields (append '("langid" "langidopts")
 			   (cdr fields))))
+  ;; Directories for the external files of the bibliographic items
+  ;; The first one is Biblioteca so that asking for files is done from it
+  (setq ebib-file-search-dirs '("~/Biblioteca"
+				"~/Biblioteca/Actas de congresos"
+				"~/Biblioteca/Artículos en revistas"
+				"~/Biblioteca/Contribuciones a congresos"
+				"~/Biblioteca/Libros"
+				"~/Biblioteca/Tesis doctorales"))
+  ;; Associations of file extensions with external viewers
+  (setq ebib-file-associations '(("pdf" . "evince")
+				 ("ps" . "evince")))
   )
