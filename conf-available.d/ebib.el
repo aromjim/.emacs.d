@@ -37,4 +37,8 @@
   ;; Associations of file extensions with external viewers
   (setq ebib-file-associations '(("pdf" . "evince")
 				 ("ps" . "evince")))
+  ;; File where keywords from all bibliographic databases are saved
+  (setq ebib-keywords-file "~/.texmf/bibtex/bib/ebib-keywords.txt")
+  ;; Keep keyword file sorted and without duplicates
+  (setq ebib-keywords-field-keep-sorted t)
   )
