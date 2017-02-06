@@ -5,6 +5,8 @@
   (setq ebib-bib-search-dirs '("~/.texmf/bibtex/bib/personal"))
   ;; Bibliographic databases to load on startup
   (setq ebib-preload-bib-files '("Bibliography.bib"))
+  ;; Don't create backup files for bibliographic databases
+  (setq ebib-create-backups nil)
   ;; Biblatex format for bibliographic databases
   (setq ebib-bibtex-dialect 'biblatex)
   ;; Customization of the table format for index buffer
