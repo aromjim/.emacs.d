@@ -463,3 +463,11 @@
       (add-unicode-keymap mathematical-double-struck-letters "mds")
       (add-unicode-keymap subscript-symbols "_")
       (add-unicode-keymap mathematical-operators "mo"))))
+
+
+;;; Configuration of RefTeX, a package for labels, references, citations, and indices in LaTeX
+
+(use-package reftex
+  :defer t
+  :config
+  (setq reftex-use-external-file-finders t))
