@@ -464,6 +464,14 @@
       (add-unicode-keymap subscript-symbols "_")
       (add-unicode-keymap mathematical-operators "mo"))))
 
+(use-package font-latex
+  :defer t
+  :config
+  ;; Font for unicode mathematical symbols
+  (create-fontset-from-fontset-spec "-*-*-*-*-*-*-*-*-*-*-*-*-fontset-math")
+  (set-fontset-font "fontset-math" 'unicode "STIXGeneral")
+  (set-face-attribute 'font-latex-math-face nil :fontset "fontset-math"))
+
 
 ;;; Configuration of RefTeX, a package for labels, references, citations, and indices in LaTeX
 
