@@ -12,6 +12,9 @@
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
   (setq reftex-plug-into-AUCTeX t)
 
+  ;; Parse LaTeX documents after loading
+  (setq TeX-parse-self t)
+
   ;; Bound character '\' to TeX-electric-macro
   (setq TeX-electric-escape t)
 
