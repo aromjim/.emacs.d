@@ -30,7 +30,7 @@
 (column-number-mode t)
 
 ;; Default value for automatic line-wrapping column
-(setq-default fill-column 99)
+(setq-default fill-column 79)
 
 ;; Visualize matching parens
 (show-paren-mode t)
