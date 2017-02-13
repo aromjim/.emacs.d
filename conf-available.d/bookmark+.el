@@ -11,4 +11,5 @@
   ;; Create and display bookmark list at startup
   (setq initial-buffer-choice (lambda ()
 				(bookmark-bmenu-list)
+				(bmkp-bmenu-refresh-menu-list)
 				(get-buffer "*Bookmark List*"))))
