@@ -24,6 +24,9 @@
   ;; Bound character '\' to TeX-electric-macro
   (setq TeX-electric-escape t)
 
+  ;; Don't insert empty braces for commands without arguments
+  (setq TeX-insert-braces nil)
+
   ;; Automatically insert the opening and closing symbols for an inline equation
   (setq TeX-electric-math '("$" . "$"))
 
