@@ -12,6 +12,12 @@
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
   (setq reftex-plug-into-AUCTeX t)
 
+  ;; Activate forward and inverse search to and from the viewer
+  (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+
+  ;; Always start the server for inverse correlate search
+  (setq TeX-source-correlate-start-server t)
+
   ;; Parse LaTeX documents after loading
   (setq TeX-parse-self t)
 
