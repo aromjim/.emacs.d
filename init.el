@@ -19,7 +19,13 @@
 (require 'package)
 
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(setq package-archive-priorities
+      '(("melpa-stable" . 20)
+        ("gnu" . 10)
+        ("melpa" . 0)))
 
 (setq package-user-dir "/usr/local/share/emacs/site-lisp")
 
