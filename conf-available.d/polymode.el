@@ -1,2 +1,2 @@
 (use-package polymode
-  :defer t)
+  :mode ("\\.Rnw\\'" . poly-noweb+r-mode))
