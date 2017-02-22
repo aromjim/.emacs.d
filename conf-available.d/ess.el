@@ -1,2 +1,5 @@
-(use-package ess
-  :defer t)
+(use-package ess-site
+  :defer t
+  :config
+  (delete '("\\.[rR]nw\\'" . Rnw-mode)
+	  auto-mode-alist))
