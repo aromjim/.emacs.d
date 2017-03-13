@@ -5,4 +5,5 @@
 (use-package elpy
   :after python
   :config
+  (setq python-shell-interpreter "python3")
   (elpy-enable))
