@@ -7,3 +7,7 @@
 (setq dired-recursive-copies 'always)
 (setq dired-recursive-deletes 'always)
 (setq delete-by-moving-to-trash t)
+
+;; Use directory shown in dired buffer of next window as default
+;; for file operations
+(setq dired-dwim-target t)
