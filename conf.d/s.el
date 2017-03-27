@@ -1,1 +1,2 @@
-../conf-available.d/s.el
+(use-package s
+  :defer t)

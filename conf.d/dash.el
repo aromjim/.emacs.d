@@ -1,1 +1,2 @@
-../conf-available.d/dash.el
+(use-package dash
+  :commands --each)

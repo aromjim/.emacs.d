@@ -1,1 +1,3 @@
-../conf-available.d/ivy.el
+(use-package ivy
+  :config
+  (ivy-mode 1))

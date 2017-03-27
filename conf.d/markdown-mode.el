@@ -1,1 +1,2 @@
-../conf-available.d/markdown-mode.el
+(use-package markdown-mode
+  :defer t)

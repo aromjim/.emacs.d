@@ -1,1 +1,2 @@
-../conf-available.d/f.el
+(use-package f
+  :commands f-read-text)
