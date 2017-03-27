@@ -3,3 +3,4 @@ auto-save-list/
 /tramp
 /bookmarks
 /abbrev_defs
+*.elc
