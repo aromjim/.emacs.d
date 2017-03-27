@@ -27,9 +27,10 @@
   :bind ("C-c tc" . tramp-cleanup-all-buffers)
   :config
   (let ((servers (read-server-file)))
-    (--each servers (let ((server (car it))
-			  (username (cadr it)))
-		      (add-to-list 'tramp-default-proxies-alist
-				   (list server
-					 "root"
-					 (s-lex-format "/ssh:${username}@${server}:")))))))
+    (--each servers
+      (let ((server (car it))
+	    (username (cadr it)))
+	(add-to-list 'tramp-default-proxies-alist
+		     (list server
+			   "root"
+			   (s-lex-format "/ssh:${username}@${server}:")))))))
