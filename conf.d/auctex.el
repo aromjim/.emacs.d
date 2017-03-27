@@ -39,17 +39,17 @@
 (use-package latex
   :defer t
   :config
-  (flet ((add-unicode-keymap (keys &optional prefix)
-	    (setq prefix (or prefix ""))
-	    (--each keys
-	      (let* ((key (car it))
-		     (unicode-name (cdr it))
-		     (unicode-code (cdr (assoc-string unicode-name (ucs-names) t))))
-		(define-key LaTeX-mode-map
-		  (vconcat "`" prefix key)
-		  `(lambda ()
-		     (interactive)
-		     (ucs-insert ,unicode-code)))))))
+  (cl-flet ((add-unicode-keymap (keys &optional prefix)
+	      (setq prefix (or prefix ""))
+	      (--each keys
+		(let* ((key (car it))
+		       (unicode-name (cdr it))
+		       (unicode-code (cdr (assoc-string unicode-name (ucs-names) t))))
+		  (define-key LaTeX-mode-map
+		    (vconcat "`" prefix key)
+		    `(lambda ()
+		       (interactive)
+		       (ucs-insert ,unicode-code)))))))
     (let ((greek-letters '(("A" . "GREEK CAPITAL LETTER ALPHA")
 			   ("B" . "GREEK CAPITAL LETTER BETA")
 			   ("G" . "GREEK CAPITAL LETTER GAMMA")
