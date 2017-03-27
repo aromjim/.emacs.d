@@ -1,6 +1,6 @@
 ;; Human-readable format for file sizes
-(setq list-directory-verbose-switches "-lh")
-(setq dired-listing-switches "-alh")
+(setq list-directory-verbose-switches "-lh --group-directories-first")
+(setq dired-listing-switches "-alh --group-directories-first")
 
 ;; Recursive copies and deletes allowed
 ;; but move deleted files and directories into trash
