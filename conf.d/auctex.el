@@ -493,7 +493,7 @@
   :config
   ;; Font for unicode mathematical symbols
   (create-fontset-from-fontset-spec "-*-*-*-*-*-*-*-*-*-*-*-*-fontset-math")
-  (set-fontset-font "fontset-math" 'unicode "STIXGeneral")
+  (set-fontset-font "fontset-math" 'unicode "XITS Math")
   (set-face-attribute 'font-latex-math-face nil :fontset "fontset-math"))
 
 
