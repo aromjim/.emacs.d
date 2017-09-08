@@ -1,5 +1,7 @@
 (use-package counsel
   :config
+  ;; Include file at point when finding files
+  (setq counsel-find-file-at-point t)
   ;; Global key bindings
   (global-set-key (kbd "M-x") 'counsel-M-x)
   (global-set-key (kbd "<menu>") 'counsel-M-x)
