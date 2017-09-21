@@ -3,5 +3,5 @@
 (use-package magit
   :bind ("C-c g" . magit-status)
   :config
-  (setq vc-handled-backends nil))	; Disable Emacs default version control
-					; interface
+  ;; Disable Emacs default version control interface
+  (setq vc-handled-backends nil))
