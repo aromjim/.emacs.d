@@ -12,6 +12,11 @@
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
   (setq reftex-plug-into-AUCTeX t)
 
+  ;; Use pdf-tools to open PDF files
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools")))
+  (add-hook 'TeX-after-compilation-finished-functions
+	    #'TeX-revert-document-buffer)
+
   ;; Activate forward and inverse search to and from the viewer
   (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
 
