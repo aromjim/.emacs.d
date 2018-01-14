@@ -464,6 +464,7 @@
 	     (" ," . "INVISIBLE SEPARATOR")
 	     (" +" . "INVISIBLE PLUS")
 	     ("8" . "INFINITY")
+	     ("2" . "SQUARE ROOT")
 	     ("|" . "DIVIDES")
 	     ("=d" . "EQUAL TO BY DEFINITION")
 	     ("=~" . "APPROXIMATELY EQUAL TO")
