@@ -1,0 +1,109 @@
+% -*- TeX-engine: luatex; -*-
+
+\documentclass[a4paper,12pt]{memoir}
+\semiisopage[15]
+\checkandfixthelayout
+\makepagestyle{examen}
+\makeoddfoot{examen}{}{\thepage{} de \thelastpage}{}
+\makeevenfoot{examen}{}{\thepage{} de \thelastpage}{}
+\pagestyle{examen}
+
+\usepackage{pdftexcmds}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+
+\usepackage{mathematics}
+
+\usepackage{fontspec}
+\setmainfont{Fira Sans}
+
+\usepackage[math-style=literal]{unicode-math}
+\setmathfont{XITS Math}
+\setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{XITS Math}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\tcbset{
+  every box/.style={
+    enhanced,
+    colback=white
+  },
+  every box on layer 2/.style={
+    reset,
+    every box,
+    frame empty,
+    sidebyside,
+    sidebyside align=top,
+    flushleft upper,
+    flushright lower,
+    lower separated=false,
+    boxsep=0pt,
+    nobeforeafter}}
+
+\usepackage{exsheets}
+\SetupExSheets{%
+  headings=block-wp,
+  counter-format=qu
+}
+\SetupExSheets[points]{%
+  name=punto/s,
+  format={\emph}
+}
+
+\usepackage{subfiles}
+
+
+\newcommand{\Cabecera}{
+  \begin{tcolorbox}[fontupper=\scshape, center upper, drop lifted shadow]
+    \begin{tcolorbox}
+      \Asignatura
+      \tcblower
+      \Convocatoria
+    \end{tcolorbox}
+    \begin{tcolorbox}[before skip=-.2cm]
+      \Titulación
+      \tcblower
+      \Examen
+    \end{tcolorbox}
+    \Fecha
+    
+    \bigskip
+    
+    Apellidos y nombre: \dotfill
+    % Grupo: \ldots
+  \end{tcolorbox}
+
+  \bigskip
+}
+
+% Inclusión condicional de un ejercicio
+\newcommand{\IncluyeEjercicio}[2][Ejercicio\thequestion/enunciado]{%
+  \begin{question}{#2}
+    \IfFileExists{#1}{%
+      \subfile{#1}
+    }{%
+    }
+  \end{question}
+}
+
+% Página en blanco para separar los ejercicios
+\newcommand*{\blankpage}{%
+  \null}
+
+
+% Datos del examen
+\newcommand*{\Asignatura}{${1:$$(yas-choose-value '("Lógica Informática"))}}
+\newcommand*{\Titulación}{${2:$$(yas-choose-value '("Grado en Ingeniería Informática\\\\\\\\Ingeniería del Software"))}}
+\newcommand*{\Fecha}{$3}
+\newcommand*{\Convocatoria}{Convocatoria de ${4:$$(yas-choose-value '("diciembre" "febrero" "junio" "septiembre"))}}
+\newcommand*{\Examen}{${5:$$$(yas-choose-value '("Primer control" "Segundo control" "Examen"))}}
+
+
+\begin{document}
+
+\Cabecera
+
+$0
+
+\end{document}
