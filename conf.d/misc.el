@@ -11,6 +11,10 @@
 ;; Disable toolbar
 (tool-bar-mode -1)
 
+;; Create frames maximized
+(add-to-list 'default-frame-alist
+	     '(fullscreen . maximized))
+
 
 ;;; Configuration of CUA mode
 
