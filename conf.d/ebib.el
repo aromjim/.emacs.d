@@ -16,7 +16,7 @@
   (setq ebib-autogenerate-keys t
 	bibtex-autokey-names-stretch 1
 	bibtex-autokey-name-separator "_"
-	bibtex-autokey-additional-names "_y_otros"
+	bibtex-autokey-additional-names "_et_al"
 	bibtex-autokey-year-length 0
 	bibtex-autokey-titleword-length 'infty
 	bibtex-autokey-year-title-separator ":")
