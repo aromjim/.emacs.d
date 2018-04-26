@@ -7,7 +7,7 @@
  '(load-dirs "~/.emacs.d/conf.d")
  '(package-selected-packages
    (quote
-    (haskell-mode move-text meghanada yatemplate pdf-tools tablist dired+ counsel swiper polymode ess elpy ivy-hydra ivy markdown-mode ebib bookmark+ magit f s auctex use-package load-dir))))
+    (google-translate haskell-mode move-text meghanada yatemplate pdf-tools tablist dired+ counsel swiper polymode ess elpy ivy-hydra ivy markdown-mode ebib bookmark+ magit f s auctex use-package load-dir))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
