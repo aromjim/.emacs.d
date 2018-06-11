@@ -10,3 +10,7 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
+;; Require use-package
+(straight-use-package 'use-package)
+(require 'use-package)
