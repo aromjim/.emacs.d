@@ -14,3 +14,9 @@
 ;; Require use-package
 (straight-use-package 'use-package)
 (require 'use-package)
+
+;; Load all configuration files in ~/.emacs.d/conf.d
+(use-package load-dir
+  :straight t
+  :init
+  (setq load-dirs "~/.emacs.d/conf.d"))
