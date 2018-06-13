@@ -2,8 +2,6 @@
 (defvar server-file "servers.private")
 
 (defun read-server-file (&optional with-port-only)
-  (use-package f
-    :straight t)
   (let* ((filename (locate-user-emacs-file server-file))
 	 (server-list (f-read-text filename 'utf-8))
 	 (servers (--map (s-split "[[:space:]]+" it)
@@ -28,8 +26,6 @@
 (use-package tramp
   :bind ("C-c c" . tramp-cleanup-all-buffers)
   :config
-  (use-package s
-    :straight t)
   (let ((servers (read-server-file)))
     (--each servers
       (let ((server (car it))

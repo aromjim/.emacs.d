@@ -39,8 +39,6 @@
 						  ; the viewer
 	 )
   :config
-  (use-package cl-lib)
-  (use-package dash)
   (cl-flet ((add-unicode-keymap (keys &optional prefix)
 	      (setq prefix (or prefix ""))
 	      (--each keys
