@@ -1,6 +1,8 @@
 (use-package bookmark+
   :straight t
   :config
+  ;; Default bookmark file is the initial one
+  (setq bmkp-last-as-first-bookmark-file nil)
   ;; Don't automatically save bookmark list state
   (setq bmkp-bmenu-state-file nil)
   ;; Don't show filenames in bookmark list
