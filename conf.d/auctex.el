@@ -1,5 +1,16 @@
 (use-package tex-site
-  :straight auctex
+  :straight (auctex :type git
+  	    	    :host github
+		    :repo "emacsmirror/auctex"
+		    :files (("auctex/" "*.el")
+			    (:exclude "auto-loads.el"
+				      "lpath.el"
+				      "prv-install.el")
+			    ("auctex/images/" "images/*.xpm")
+			    ("auctex/style/" "style/*.el" "style/.nosearch")
+			    "auctex.el"
+			    "preview-latex.el"
+			    "tex-site.el"))
   :mode
   ("\\.tex\\'" . TeX-latex-mode)
   :config
