@@ -26,6 +26,7 @@
 (use-package tramp
   :bind ("C-c c" . tramp-cleanup-all-buffers)
   :config
+  (setq password-cache-expiry nil)
   (let ((servers (read-server-file)))
     (--each servers
       (let ((server (car it))
