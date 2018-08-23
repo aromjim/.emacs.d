@@ -1,19 +1,11 @@
-% -*- TeX-engine: luatex; -*-
+% Retroceso hasta la fecha indicada para garantizar los mismos resultados en
+% compilaciones futuras
+\RequirePackage[`(format-time-string "%Y/%m/%d")`]{latexrelease}
 
-\documentclass[a4paper,12pt]{memoir}
-\semiisopage[15]
-\checkandfixthelayout
-\makepagestyle{examen}
-\makeoddfoot{examen}{}{\thepage{} de \thelastpage}{}
-\makeevenfoot{examen}{}{\thepage{} de \thelastpage}{}
-\pagestyle{examen}
-
-\usepackage{pdftexcmds}
+\documentclass[a4paper,12pt]{csusexam}
 
 \usepackage{polyglossia}
 \setdefaultlanguage{spanish}
-
-\usepackage{mathematics}
 
 \usepackage{fontspec}
 \setmainfont{Fira Sans}
@@ -22,88 +14,31 @@
 \setmathfont{XITS Math}
 \setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{XITS Math}
 
-\usepackage{tcolorbox}
-\tcbuselibrary{skins}
-\tcbset{
-  every box/.style={
-    enhanced,
-    colback=white
-  },
-  every box on layer 2/.style={
-    reset,
-    every box,
-    frame empty,
-    sidebyside,
-    sidebyside align=top,
-    flushleft upper,
-    flushright lower,
-    lower separated=false,
-    boxsep=0pt,
-    nobeforeafter}}
-
-\usepackage{exsheets}
-\SetupExSheets{%
-  headings=block-wp,
-  counter-format=qu
-}
-\SetupExSheets[points]{%
-  name=punto/s,
-  format={\emph}
-}
-
-\usepackage{subfiles}
-
-
-\newcommand{\Cabecera}{
-  \begin{tcolorbox}[fontupper=\scshape, center upper, drop lifted shadow]
-    \begin{tcolorbox}
-      \Asignatura
-      \tcblower
-      \Convocatoria
-    \end{tcolorbox}
-    \begin{tcolorbox}[before skip=-.2cm]
-      \Titulación
-      \tcblower
-      \Examen
-    \end{tcolorbox}
-    \Fecha
-    
-    \bigskip
-    
-    Apellidos y nombre: \dotfill
-    % Grupo: \ldots
-  \end{tcolorbox}
-
-  \bigskip
-}
-
-% Inclusión condicional de un ejercicio
-\newcommand{\IncluyeEjercicio}[2][Ejercicio\thequestion/enunciado]{%
-  \begin{question}{#2}
-    \IfFileExists{#1}{%
-      \subfile{#1}
-    }{%
-    }
-  \end{question}
-}
-
-% Página en blanco para separar los ejercicios
-\newcommand*{\blankpage}{%
-  \null}
-
 
 % Datos del examen
-\newcommand*{\Asignatura}{${1:$$(yas-choose-value '("Lógica Informática"))}}
-\newcommand*{\Titulación}{${2:$$(yas-choose-value '("Grado en Ingeniería Informática\\\\\\\\Ingeniería del Software"))}}
-\newcommand*{\Fecha}{$3}
-\newcommand*{\Convocatoria}{Convocatoria de ${4:$$(yas-choose-value '("diciembre" "febrero" "junio" "septiembre"))}}
-\newcommand*{\Examen}{${5:$$$(yas-choose-value '("Primer control" "Segundo control" "Examen"))}}
+\configuraciónexamen{
+  asignatura=${1:$$(yas-choose-value '("Lógica Informática"))},
+  titulación=${2:$$(yas-choose-value '("Grado en Ingeniería Informática"))},
+  convocatoria=Convocatoria de ${3:$$(yas-choose-value '("diciembre" "febrero" "junio" "septiembre"))},
+  examen=${4:$$(yas-choose-value '("Primer control" "Segundo control" "Examen"))},
+  fecha=$5,
+}
 
 
 \begin{document}
 
-\Cabecera
+\begin{cabeceraexamen}
+  Apellidos y nombre: \elipsiscompleta
+  Grupo: \elipsis
+\end{cabeceraexamen}
 
-$0
+
+\begin{ejerciciosdelexamen}
+  \incluyeejercicio{$0}
+\end{ejerciciosdelexamen}
 
 \end{document}
+
+% Local Variables:
+% TeX-engine: luatex
+% End:
