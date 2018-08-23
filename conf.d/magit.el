@@ -8,4 +8,15 @@
   (setq vc-handled-backends nil)
   ;; Use the entire frame when displaying a status buffer
   (setq magit-display-buffer-function
-	#'magit-display-buffer-fullframe-status-v1))
+	#'magit-display-buffer-fullframe-status-v1)
+  ;; Set the commit author for specified repositories
+  (add-to-list 'safe-local-variable-values
+	       '(magit-commit-arguments .
+		("--author=Álvaro Romero-Jiménez <aromjim@gmail.com>")))
+
+  (dir-locals-set-class-variables 'tramp-server-repository
+     '((nil . ((magit-commit-arguments .
+		("--author=Álvaro Romero-Jiménez <aromjim@gmail.com>"))))))
+
+  (dir-locals-set-directory-class
+   "/sudo:root@post.cs.us.es:/etc/" 'tramp-server-repository))

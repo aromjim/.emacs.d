@@ -53,3 +53,6 @@
 
 ;; Don't make a backup of a file the first time it is saved
 (setq make-backup-files nil)
+
+;; Allow remote directory-local variables
+(setq enable-remote-dir-locals t)
