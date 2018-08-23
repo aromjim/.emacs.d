@@ -50,6 +50,7 @@
 						  ; the viewer
 	 )
   :config
+  ;; Keybindings to introduce unicode characters
   (cl-flet ((add-unicode-keymap (keys &optional prefix)
 	      (setq prefix (or prefix ""))
 	      (--each keys
