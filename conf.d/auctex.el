@@ -50,6 +50,9 @@
 						  ; the viewer
 	 )
   :config
+  ;; Intermediate files of xsim package
+  (add-to-list 'LaTeX-clean-intermediate-suffixes ".*-body\\.tex")
+
   ;; Keybindings to introduce unicode characters
   (cl-flet ((add-unicode-keymap (keys &optional prefix)
 	      (setq prefix (or prefix ""))
