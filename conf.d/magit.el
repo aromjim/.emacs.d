@@ -19,7 +19,7 @@
 		("--author=Álvaro Romero-Jiménez <aromjim@gmail.com>"))))))
 
   (dir-locals-set-directory-class
-   "/sudo:root@post.cs.us.es:/etc/" 'tramp-server-repository))
+   "/sudo:root@post.cs.us.es:/etc/" 'tramp-server-repository)
 
   (dir-locals-set-directory-class
    "/sudo:root@sierpes.cs.us.es:/etc/" 'tramp-server-repository))
