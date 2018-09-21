@@ -23,3 +23,6 @@
 
   (dir-locals-set-directory-class
    "/sudo:root@sierpes.cs.us.es:/etc/" 'tramp-server-repository))
+
+  (dir-locals-set-directory-class
+   "/sudo:root@maimonides8.changeip.org:/etc/" 'tramp-server-repository))
