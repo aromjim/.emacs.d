@@ -1,0 +1,41 @@
+% Retroceso hasta la fecha indicada para garantizar los mismos resultados en
+% compilaciones futuras
+\RequirePackage[`(format-time-string "%Y/%m/%d")`]{latexrelease}
+
+\documentclass[a4paper,12pt]{memoir}
+\isopage[15]
+\checkandfixthelayout
+\pagestyle{plain}
+\setlength{\parindent}{0pt}
+\nonzeroparskip
+
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+
+\usepackage{mathematics}
+
+\usepackage{fontspec}
+\setmainfont{Fira Sans}
+\setmonofont{Fira Mono}
+
+\usepackage[math-style=literal]{unicode-math}
+\setmathfont[StylisticSet=1]{STIX2 Math}
+
+
+\begin{document}
+
+\title{$0}
+\preauthor{}
+\author{}
+\postauthor{}
+\predate{}
+\date{}
+\postdate{}
+\maketitle
+
+
+\end{document}
+
+% Local Variables:
+% TeX-engine: luatex
+% End:

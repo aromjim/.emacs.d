@@ -1,0 +1,277 @@
+% Retroceso hasta la fecha indicada para garantizar los mismos resultados en
+% compilaciones futuras
+\RequirePackage[`(format-time-string "%Y/%m/%d")`]{latexrelease}
+
+\documentclass[a4paper,12pt]{memoir}
+
+\isopage[20]
+\checkandfixthelayout
+
+\usepackage{pageslts}
+
+\usepackage{fontspec}
+\setmainfont{Fira Sans}
+
+\usepackage[math-style=literal]{unicode-math}
+\setmathfont[StylisticSet=1]{STIX2 Math}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+
+\usepackage{hyperref}
+
+\usepackage{totcount}
+\newtotcounter{PuntosOrdenDelDía}
+
+\usepackage{xifthen}
+\usepackage{forloop}
+
+\usepackage{enumitem}
+
+\usepackage{zref}
+
+\usepackage{xparse}
+
+\usepackage{xspace}
+
+\usepackage{siunitx}
+
+\usepackage{pdfpages}
+
+
+\makeatletter
+
+\zref@newlist{OrdenDelDía}
+\zref@newprop{texto}{}
+\zref@addprops{OrdenDelDía}{texto}
+
+\newcommand*{\PuntoOrdenDelDía}[1]{%
+  \item \pdfbookmark{#1}{Punto\arabic{Actai}}
+    \hypertarget{Punto\arabic{Actai}}{\textbf{#1}}
+    \zref@setcurrent{texto}{#1}
+    \zref@labelbylist{Punto\arabic{Actai}}{OrdenDelDía}
+    \stepcounter{PuntosOrdenDelDía}
+}
+
+\newcommand*{\refPuntoOrdenDelDía}[1]{%
+  \zifrefundefined{#1}{%
+    \zref@default}{%
+    \zref@extract{#1}{texto}.
+  }
+}
+
+\makeatother
+
+\newlist{Acta}{enumerate}{1}
+\setlist[Acta]{label=\arabic{Actai}, font=\bfseries}
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+
+\definecolor{sombreadocabecera}{gray}{0.9}
+\newcommand*{\cabecera}{
+  \begin{tcolorbox}[%
+    enhanced,
+    colback=sombreadocabecera,
+    arc=3mm,
+    frame hidden,
+    lower separated=false,
+    sidebyside,
+    lefthand ratio=0.4,
+    fontupper=\scshape\bfseries\large,
+    fontlower=\scshape\bfseries\LARGE,
+    halign upper=flush center,
+    halign lower=flush center
+    ]
+    \includegraphics{marca-dos-tintas}
+    \par\medskip
+    Facultad de Matemáticas
+    \tcblower
+    Comisión de Equipamiento
+    \par\medskip
+    ACTA \NúmeroActa
+    \par\medskip
+    {\large\mdseries\FechaConvocatoria}
+  \end{tcolorbox}
+  \bigskip
+  \bigskip
+}
+
+\makepagestyle{acta}
+\makeoddfoot{acta}{}{\thepage{} de \pageref*{pagesLTS.arabic}}{}
+\makeevenfoot{acta}{}{\thepage{} de \pageref*{pagesLTS.arabic}}{}
+\pagestyle{acta}
+
+
+%%% Miembros de la Comisión
+\newcommand*{\Vicedecano}{\RafaelVilla}
+\newcommand*{\Secretario}{\ÁlvaroRomero}
+\NewDocumentCommand\JuanArias{s}{%
+  \IfBooleanTF#1%
+  {D.~Juan Arias\xspace}%
+  {D.~Juan Arias de Reyna Martínez\xspace}%
+}
+\NewDocumentCommand\JavierDelgado{s}{%
+  \IfBooleanTF#1%
+  {D.~Javier Delgado\xspace}%
+  {D.~Javier Delgado Cruces\xspace}%
+}
+\NewDocumentCommand\RamónFlores{s}{%
+  \IfBooleanTF#1%
+  {D.~Ramón Flores\xspace}%
+  {D.~Ramón Jesús Flores Díaz\xspace}%
+}
+\NewDocumentCommand\EnriqueGarcía{s}{%
+  \IfBooleanTF#1%
+  {D.~Enrique García\xspace}%
+  {D.~Enrique Martín García Martín\xspace}%
+}
+\NewDocumentCommand\JavierGuerrero{s}{%
+  \IfBooleanTF#1%
+  {D.~Javier Guerrero\xspace}%
+  {D.~Javier Guerrero Torrado\xspace}%
+}
+\NewDocumentCommand\PedroMarín{s}{%
+  \IfBooleanTF#1%
+  {D.~Pedro Marín\xspace}%
+  {D.~Pedro Marín Rubio\xspace}%
+}
+\NewDocumentCommand\RafaelPino{s}{%
+  \IfBooleanTF#1%
+  {D.~Rafael Pino\xspace}%
+  {D.~Rafael Pino Mejías\xspace}%
+}
+\NewDocumentCommand\JorgeReyes{s}{%
+  \IfBooleanTF#1%
+  {D.~Jorge Reyes\xspace}%
+  {D.~Jorge Reyes Pérez\xspace}%
+}
+\NewDocumentCommand\ÁlvaroRomero{s}{%
+  \IfBooleanTF#1%
+  {D.~Álvaro Romero\xspace}%
+  {D.~Álvaro Romero Jiménez\xspace}%
+}
+\NewDocumentCommand\JoséMaríaTornero{s}{%
+  \IfBooleanTF#1%
+  {D.~José María Tornero\xspace}%
+  {D.~José María Tornero Sánchez\xspace}%
+}
+
+%%% Datos de la convocatoria
+\newcommand*{\NúmeroActa}{$1}
+\newcommand*{\FechaConvocatoria}{$2\xspace}
+\newcommand*{\HoraInicio}{$3\xspace}
+\newcommand*{\HoraFin}{$4\xspace}
+
+
+\hypersetup{
+  unicode,
+  pdftitle=Acta \NúmeroActa,
+  pdfsubject=Comisión de Equipamiento – Facultad de Matemáticas}
+
+
+\begin{document}
+
+
+\pagenumbering{arabic}
+
+\cabecera
+
+En la Sala de Reuniones del Decanato de la Facultad de Matemáticas, a las
+\HoraInicio horas del día \FechaConvocatoria, se reunió la Comisión de
+Equipamiento de la Facultad de Matemáticas, bajo la presidencia del
+Sr.~Vicedecano de Infraestructura y Biblioteca, \Vicedecano, con la asistencia
+de los miembros de la Comisión que a continuación se relacionan:
+\begin{center}
+  \parbox{.9\linewidth}{%
+    $0\JuanArias,
+    \JavierDelgado,
+    \RamónFlores,
+    \EnriqueGarcía,
+    \JavierGuerrero,
+    \PedroMarín,
+    \RafaelPino,
+    \JorgeReyes,
+    \ÁlvaroRomero,
+    \JoséMaríaTornero.
+  }
+\end{center}
+% Excusan su asistencia:
+% \begin{center}
+%   \parbox{.9\linewidth}{%
+%   }
+% \end{center}
+
+\bigskip
+\bigskip
+
+Orden del día:
+\ifthenelse{\totvalue{PuntosOrdenDelDía} < 0}{}{
+  \begin{enumerate}
+    \newcounter{Punto}
+    \forloop{Punto}{1}{\cnttest{\value{Punto}}{<=}{\totvalue{PuntosOrdenDelDía}}}
+    {\item \hyperlink{Punto\thePunto}{\refPuntoOrdenDelDía{Punto\thePunto}}}
+  \end{enumerate}
+}
+
+% \newpage
+
+\bigskip
+\bigskip
+
+\begin{Acta}
+  \PuntoOrdenDelDía{Aprobación, si procede, de las actas de las sesiones
+    anteriores}
+
+  Se aprueba por asentimiento el acta número \pgfmathparse{\NúmeroActa - 1}
+  \pgfmathprintnumber[int detect, assume math mode]{\pgfmathresult} de esta
+  Comisión.
+
+
+  \PuntoOrdenDelDía{Informe}
+
+
+  \PuntoOrdenDelDía{Ruegos y preguntas}
+
+  No hay.
+\end{Acta}
+
+\bigskip
+% \newpage
+
+Sin más asuntos que tratar, se levanta la sesión a las \HoraFin horas. Como
+Secretario doy fe.
+
+\bigskip
+\bigskip
+
+\begin{minipage}[t]{.45\linewidth}
+  EL SECRETARIO
+  
+  \vspace{2cm}
+  
+  \Secretario
+\end{minipage}
+\begin{minipage}[t]{.45\linewidth}
+  V.º B.º EL VICEDECANO
+  
+  \vspace{2cm}
+  
+  \Vicedecano
+\end{minipage}
+
+% \newpage
+
+% \pagenumbering{Roman}
+
+% \includepdf[link,linkname=AnexoI]{Anexo_I.pdf}
+% \includepdf[link,linkname=AnexoII]{Anexo_II.pdf}
+% \includepdf[link,linkname=AnexoIII]{Anexo_III.pdf}
+
+\end{document}
+
+% Local Variables:
+% TeX-engine: luatex
+% End:
