@@ -1,0 +1,238 @@
+% Retroceso hasta la fecha indicada para garantizar los mismos resultados en
+% compilaciones futuras
+\RequirePackage[`(format-time-string "%Y/%m/%d")`]{latexrelease}
+
+\documentclass[a4paper,12pt]{memoir}
+
+\isopage[20]
+\checkandfixthelayout
+
+\usepackage{pageslts}
+
+\usepackage{fontspec}
+\setmainfont{Fira Sans}
+
+\usepackage[math-style=literal]{unicode-math}
+\setmathfont[StylisticSet=1]{STIX2 Math}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+
+\usepackage{hyperref}
+
+\usepackage{totcount}
+\newtotcounter{PuntosOrdenDelDía}
+
+\usepackage{xifthen}
+\usepackage{forloop}
+
+\usepackage{enumitem}
+
+\usepackage{zref}
+
+\usepackage{xparse}
+
+\usepackage{xspace}
+
+\usepackage{siunitx}
+
+\usepackage{pdfpages}
+
+
+\makeatletter
+
+\zref@newlist{OrdenDelDía}
+\zref@newprop{texto}{}
+\zref@addprops{OrdenDelDía}{texto}
+
+\newcommand*{\PuntoOrdenDelDía}[1]{%
+  \item \pdfbookmark{#1}{Punto\arabic{Actai}}
+    \hypertarget{Punto\arabic{Actai}}{\textbf{#1}}
+    \zref@setcurrent{texto}{#1}
+    \zref@labelbylist{Punto\arabic{Actai}}{OrdenDelDía}
+    \stepcounter{PuntosOrdenDelDía}
+}
+
+\newcommand*{\refPuntoOrdenDelDía}[1]{%
+  \zifrefundefined{#1}{%
+    \zref@default}{%
+    \zref@extract{#1}{texto}.
+  }
+}
+
+\makeatother
+
+\newlist{Acta}{enumerate}{1}
+\setlist[Acta]{label=\arabic{Actai}, font=\bfseries}
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+
+
+\definecolor{sombreadocabecera}{gray}{0.9}
+\newcommand*{\cabecera}{
+  \begin{tcolorbox}[%
+    enhanced,
+    colback=sombreadocabecera,
+    arc=3mm,
+    frame hidden,
+    lower separated=false,
+    sidebyside,
+    lefthand ratio=0.4,
+    fontupper=\scshape\bfseries\large,
+    fontlower=\scshape\bfseries\LARGE,
+    halign upper=flush center,
+    halign lower=flush center
+    ]
+    \includegraphics{marca-dos-tintas}
+    \par\medskip
+    Departamento de Ciencias de la Computación e Inteligencia Artificial
+    \tcblower
+    Comisión de Contratación de Ayudantes Doctores
+    \par\medskip
+    PLAZA \NúmeroPlaza{} - ACTA \NúmeroActa
+    \par\medskip
+    {\large\mdseries\FechaConvocatoria}
+  \end{tcolorbox}
+  \bigskip
+  \bigskip
+}
+
+\makepagestyle{acta}
+\makeoddfoot{acta}{}{\thepage{} de \pageref*{pagesLTS.arabic}}{}
+\makeevenfoot{acta}{}{\thepage{} de \pageref*{pagesLTS.arabic}}{}
+\pagestyle{acta}
+
+
+%%% Miembros de la Comisión
+\newcommand*{\Presidente}{\JoséLuisRuiz}
+\newcommand*{\Secretario}{\ÁlvaroRomero}
+\NewDocumentCommand\ToñiChávez{s}{%
+  \IfBooleanTF#1%
+  {D.ª~Antonia Chávez\xspace}%
+  {D.ª~Antonia María Chávez González\xspace}%
+}
+\NewDocumentCommand\MaríaJoséHidalgo{s}{%
+  \IfBooleanTF#1%
+  {D.ª~María José Hidalgo\xspace}%
+  {D.ª~María José Hidalgo Doblado\xspace}%
+}
+\NewDocumentCommand\MiguelÁngelMartínez{s}{%
+  \IfBooleanTF#1%
+  {D.~Miguel Ángel Martínez\xspace}%
+  {D.~Miguel Ángel Martínez del Amor\xspace}%
+}
+\NewDocumentCommand\ÁlvaroRomero{s}{%
+  \IfBooleanTF#1%
+  {D.~Álvaro Romero\xspace}%
+  {D.~Álvaro Romero Jiménez\xspace}%
+}
+\NewDocumentCommand\JoséLuisRuiz{s}{%
+  \IfBooleanTF#1%
+  {D.~José Luis Ruiz\xspace}%
+  {D.~José Luis Ruiz Reina\xspace}%
+}
+
+%%% Datos de la convocatoria
+\newcommand*{\NúmeroPlaza}{$1\xspace}
+\newcommand*{\NúmeroActa}{$2}
+\newcommand*{\FechaConvocatoria}{$3\xspace}
+\newcommand*{\HoraInicio}{$4\xspace}
+\newcommand*{\HoraFin}{$5\xspace}
+
+
+\hypersetup{
+  unicode,
+  pdftitle=Plaza \NúmeroPlaza{} - Acta \NúmeroActa,
+  pdfsubject={Comisión de Contratación de Ayudantes Doctores –
+    Departamento de Ciencias de la Computación e Inteligencia Artificial}}
+
+
+\begin{document}
+
+
+\pagenumbering{arabic}
+
+\cabecera
+
+En Sevilla, a las \HoraInicio horas del día \FechaConvocatoria se reúne la
+Comisión de Contratación de Profesores Ayudantes del Departamento de Ciencias
+de la Computación e Inteligencia Artificial, bajo la presidencia del Ilmo. Sr.
+Dir. del Departamento, \Presidente, por delegación del Excmo. Sr.
+Rector Magfco. de la Universidad de Sevilla, con la asistencia de los miembros de
+la Comisión que se relacionan y con el orden del día que se consigna.
+
+\bigskip
+\bigskip
+
+Asistentes:
+\begin{center}
+  \parbox{.9\linewidth}{%
+    $0\ToñiChávez,
+    \MaríaJoséHidalgo,
+    \MiguelÁngelMartínez,
+    \ÁlvaroRomero.
+  }
+\end{center}
+% Excusan su asistencia:
+% \begin{center}
+%   \parbox{.9\linewidth}{%
+%   }
+% \end{center}
+
+\bigskip
+\bigskip
+
+Orden del día:
+\ifthenelse{\totvalue{PuntosOrdenDelDía} < 0}{}{
+  \begin{enumerate}
+    \newcounter{Punto}
+    \forloop{Punto}{1}{\cnttest{\value{Punto}}{<=}{\totvalue{PuntosOrdenDelDía}}}
+    {\item \hyperlink{Punto\thePunto}{\refPuntoOrdenDelDía{Punto\thePunto}}}
+  \end{enumerate}
+}
+
+% \newpage
+
+\bigskip
+\bigskip
+
+\begin{Acta}
+  \PuntoOrdenDelDía{Aprobación, si procede, de las actas de las sesiones
+    anteriores}
+
+  Se aprueba por asentimiento el acta número \pgfmathparse{\NúmeroActa - 1}
+  \pgfmathprintnumber[int detect, assume math mode]{\pgfmathresult} de esta
+  Comisión.
+\end{Acta}
+
+\bigskip
+% \newpage
+
+Sin más asuntos que tratar, se levanta la sesión a las \HoraFin horas. Como
+Secretario doy fe.
+
+\bigskip
+\bigskip
+
+\begin{minipage}[t]{.45\linewidth}
+  EL SECRETARIO
+  
+  \vspace{2cm}
+  
+  \Secretario
+\end{minipage}
+\begin{minipage}[t]{.45\linewidth}
+  V.º B.º PRESIDENTE
+  
+  \vspace{2cm}
+  
+  \Presidente
+\end{minipage}
+
+\end{document}
+
+% Local Variables:
+% TeX-engine: luatex
+% End:
