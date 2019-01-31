@@ -30,3 +30,7 @@ Inserted by installing org-mode or when a release is made."
 (provide 'org-version)
 
 (straight-use-package 'org) ; or org-plus-contrib if desired
+
+
+(use-package orgtbl-aggregate
+  :straight t)
