@@ -11,17 +11,15 @@
 \setmainfont{Fira Sans}
 
 \usepackage[math-style=literal]{unicode-math}
-\setmathfont{XITS Math}
-\setmathfont[range={\mathcal,\mathbfcal},StylisticSet=1]{XITS Math}
 \setmathfont[StylisticSet=1]{STIX2 Math}
 
 
 % Datos del examen
 \configuraciónexamen{
-  asignatura=${1:$$(yas-choose-value '("Lógica Informática"))},
-  titulación=${2:$$(yas-choose-value '("Grado en Ingeniería Informática"))},
-  convocatoria=Convocatoria de ${3:$$(yas-choose-value '("diciembre" "febrero" "junio" "septiembre"))},
-  examen=${4:$$(yas-choose-value '("Primer control" "Segundo control" "Examen"))},
+  asignatura=${1:$$(yas-choose-value asignaturas)},
+  titulación=${2:$$(yas-choose-value titulaciones)},
+  convocatoria=Convocatoria de ${3:$$(yas-choose-value convocatorias)},
+  examen=${4:$$(yas-choose-value exámenes)},
   fecha=$5,
 }
 
