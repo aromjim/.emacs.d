@@ -7,6 +7,7 @@
   :commands (--each			; Used in AUCTeX configuration
     					; Used in Ebib configuration
     					; Used in TRAMP configuration
+    					; Used in RefTeX configuration
 	     --filter)			; Used in TRAMP configuration
   )
 

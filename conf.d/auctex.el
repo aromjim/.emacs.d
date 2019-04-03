@@ -517,4 +517,9 @@
   ;; Use external programs instead of environment variables to find files
   (setq reftex-use-external-file-finders t)
   ;; Turn on all plug-ins for AUCTeX
-  (setq reftex-plug-into-AUCTeX t))
+  (setq reftex-plug-into-AUCTeX t)
+  ;; Add spanish words to ignore when deriving labels
+  (setq reftex-spanish-ignorewords '("el" "la" "de"))
+  (--each reftex-spanish-ignorewords
+    (push it (nth 5 reftex-derive-label-parameters)))
+  )
