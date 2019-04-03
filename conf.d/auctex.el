@@ -522,4 +522,6 @@
   (setq reftex-spanish-ignorewords '("el" "la" "de"))
   (--each reftex-spanish-ignorewords
     (push it (nth 5 reftex-derive-label-parameters)))
-  )
+  ;; Allow non-ASCII alphanumeric characters when deriving labels
+  (setq reftex-translate-to-ascii-function nil)
+  (setq reftex-label-illegal-re "[^-_+=:;,.[:alnum:]]"))
