@@ -43,6 +43,7 @@
   (setq LaTeX-electric-left-right-brace t))
 
 (use-package latex
+  :straight nil
   :after tex-site
   :hook ((LaTeX-mode . turn-on-flyspell) ; Activate on the fly spell checking
 	 (LaTeX-mode . TeX-source-correlate-mode) ; Activate forward and
@@ -502,6 +503,7 @@
       (add-unicode-keymap mathematical-operators "mo"))))
 
 (use-package font-latex
+  :straight nil
   :after tex-site
   :config
   ;; Font for unicode mathematical symbols
@@ -510,7 +512,6 @@
   (set-face-attribute 'font-latex-math-face nil :fontset "fontset-math"))
 
 (use-package reftex
-  :straight t
   :after tex-site
   :hook (LaTeX-mode . turn-on-reftex)	; Activate RefTeX mode
   :config

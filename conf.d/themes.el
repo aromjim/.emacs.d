@@ -1,2 +1,1 @@
-(use-package zenburn-theme
-  :straight t)
+(use-package zenburn-theme)

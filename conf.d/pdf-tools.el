@@ -1,5 +1,4 @@
 (use-package pdf-tools
-  :straight t
   :magic ("%PDF" . pdf-view-mode)
   :config
   (pdf-tools-install)

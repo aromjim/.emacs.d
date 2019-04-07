@@ -1,8 +1,8 @@
 (use-package google-translate
-  :straight t
   :defer t)
 
 (use-package google-translate-smooth-ui
+  :straight nil
   :bind ("C-c t" . google-translate-smooth-translate)
   :config
   (setq google-translate-translation-directions-alist

@@ -1,5 +1,4 @@
 (use-package ivy
-  :straight t
   :config
   ;; Redefine key bindings for page navigation
   (define-key ivy-minibuffer-map (kbd "<next>") 'ivy-scroll-up-command)

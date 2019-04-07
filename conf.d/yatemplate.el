@@ -1,5 +1,4 @@
 (use-package yatemplate
-  :straight t
   :defer t
   :init
   (yatemplate-fill-alist)

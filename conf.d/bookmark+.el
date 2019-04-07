@@ -1,5 +1,4 @@
 (use-package bookmark+
-  :straight t
   :config
   ;; Default bookmark file is the initial one
   (setq bmkp-last-as-first-bookmark-file nil)

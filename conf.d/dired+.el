@@ -1,2 +1,1 @@
-(use-package dired+
-  :straight t)
+(use-package dired+)

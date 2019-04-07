@@ -33,5 +33,4 @@ Inserted by installing org-mode or when a release is made."
 
 
 (use-package orgtbl-aggregate
-  :straight t
   :defer t)

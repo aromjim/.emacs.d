@@ -1,5 +1,4 @@
 (use-package counsel
-  :straight t
   :bind (("M-x" . counsel-M-x)
 	 ("<menu>" . counsel-M-x)
 	 ("C-x C-f" . counsel-find-file)
