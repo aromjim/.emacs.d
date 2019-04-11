@@ -9,14 +9,19 @@
     )
   "Available date formats for insert-date command")
 
-(defun insert-date ()
+(defun insert-date (from-calendar)
   "Insert date at point."
-  (interactive)
-  (ivy-read "Insert date: "
-	    (--map (format-time-string it) date-formats)
-	    :preselect 0
-	    :action (lambda (date)
-		      (when (use-region-p) (delete-region (region-beginning) (region-end)))
-		      (insert date))
+  (interactive "P")
+  (let (date)
+    (when from-calendar
+      (setq date (org-read-date nil t)))
+    (ivy-read "Insert date: "
+	      (--map (format-time-string it date) date-formats)
+	      :preselect 0
+	      :action (lambda (date)
+			(when (use-region-p)
+			  (delete-region (region-beginning) (region-end)))
+			(insert date))
+	      :caller 'insert-date)))
 
 (global-set-key (kbd "C-c d") 'insert-date)
