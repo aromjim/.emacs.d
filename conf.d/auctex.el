@@ -38,7 +38,7 @@
 
 (use-package latex
   :straight nil
-  :after tex-site
+  :after (tex-site cl-lib dash)
   :hook ((LaTeX-mode . turn-on-flyspell) ; Activate on the fly spell checking
 	 (LaTeX-mode . TeX-source-correlate-mode) ; Activate forward and
 						  ; inverse search to and from
@@ -498,6 +498,7 @@
 
 (use-package font-latex
   :straight nil
+  :defer t
   :after tex-site
   :config
   ;; Font for unicode mathematical symbols
@@ -506,7 +507,7 @@
   (set-face-attribute 'font-latex-math-face nil :fontset "fontset-math"))
 
 (use-package reftex
-  :after tex-site
+  :after latex
   :hook (LaTeX-mode . turn-on-reftex)	; Activate RefTeX mode
   :config
   ;; Use external programs instead of environment variables to find files
