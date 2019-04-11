@@ -21,12 +21,7 @@
 	 (port (nth 2 (assoc server servers))))
     (call-process "knock" nil nil nil server port)))
 
-(global-set-key (kbd "C-c k") 'knock-remote-server)
-
-(use-package tramp
-  :bind ("C-c c" . tramp-cleanup-all-buffers)
-  :config
-  (setq password-cache-expiry nil)
+(defun set-tramp-multi-hops ()
   (let ((servers (read-server-file)))
     (--each servers
       (let ((server (car it))
@@ -35,3 +30,12 @@
 		     (list server
 			   "root"
 			   (s-lex-format "/ssh:${username}@${server}:")))))))
+
+(add-hook 'emacs-startup-hook #'set-tramp-multi-hops)
+
+;; Disable password cache expiring
+(setq password-cache-expiry nil)
+
+;; Set global keybindings
+(global-set-key (kbd "C-c k") 'knock-remote-server)
+(global-set-key (kbd "C-c c") 'tramp-cleanup-all-buffers)
