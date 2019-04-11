@@ -1,3 +1,11 @@
+;; Localize calendar to spanish
+(setq calendar-week-start-day 1
+      calendar-day-name-array ["domingo" "lunes" "martes" "miércoles"
+                               "jueves" "viernes" "sábado"]
+      calendar-month-name-array ["enero" "febrero" "marzo" "abril" "mayo"
+                                 "junio" "julio" "agosto" "septiembre"
+                                 "octubre" "noviembre" "diciembre"])
+
 ;; Command for inserting current date
 (defvar date-formats
   '("%0A %-e de %B de %Y"		; viernes 5 de abril de 2019
