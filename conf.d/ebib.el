@@ -1,4 +1,5 @@
 (use-package ebib
+  :after dash
   :bind ("C-c b" . ebib)
   :config
   ;; Directories containing bibliographic databases

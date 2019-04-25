@@ -1,5 +1,4 @@
 (use-package yatemplate
-  :defer t
   :init
   (yatemplate-fill-alist)
   :config
@@ -16,6 +15,5 @@
 		   "Examen")))
 
 (use-package autoinsert
-  :defer t
   :init
   (auto-insert-mode 1))

@@ -1,5 +1,4 @@
 (use-package python
-  :defer t
   :mode ("\\.py\\'" . python-mode))
 
 (use-package elpy
@@ -9,7 +8,6 @@
   (elpy-enable))
 
 (use-package pyvenv
-  :demand
   :bind ("C-c e" . pyvenv-activate)
   :config
   (pyvenv-mode 1))

@@ -3,5 +3,4 @@
   :init
   (yas-global-mode))
 
-(use-package yasnippet-snippets
-  :defer t)
+(use-package yasnippet-snippets)

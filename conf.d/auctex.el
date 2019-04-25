@@ -498,7 +498,6 @@
 
 (use-package font-latex
   :straight nil
-  :defer t
   :after tex-site
   :config
   ;; Font for unicode mathematical symbols
@@ -507,7 +506,7 @@
   (set-face-attribute 'font-latex-math-face nil :fontset "fontset-math"))
 
 (use-package reftex
-  :after latex
+  :after (latex dash)
   :hook (LaTeX-mode . turn-on-reftex)	; Activate RefTeX mode
   :config
   ;; Use external programs instead of environment variables to find files

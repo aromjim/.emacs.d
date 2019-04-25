@@ -1,5 +1,4 @@
-(use-package google-translate
-  :defer t)
+(use-package google-translate)
 
 (use-package google-translate-smooth-ui
   :straight nil

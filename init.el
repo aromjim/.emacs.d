@@ -18,6 +18,7 @@
 ;; Require use-package
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
+(setq use-package-always-demand t)
 
 ;; Load all configuration files in ~/.emacs.d/conf.d
 (use-package load-dir
