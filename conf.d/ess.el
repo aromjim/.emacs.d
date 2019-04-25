@@ -1,2 +1,4 @@
 (use-package ess-site
-  :straight ess)
+  :straight ess
+  :init
+  (setq ess-write-to-dribble nil))
