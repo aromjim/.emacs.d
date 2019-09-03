@@ -1,1 +1,2 @@
-(use-package dired+)
+(use-package dired+
+  :straight dired-plus)
