@@ -11,3 +11,6 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
+;; Load literate config file
+(org-babel-load-file (expand-file-name "emacs-init.org" user-emacs-directory))
