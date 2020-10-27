@@ -14,3 +14,11 @@
     (add-to-list 'default-frame-alist
 		 '(fullscreen . maximized))
   #+END_SRC
+
+* Modus theme
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package modus-vivendi-theme
+      :config
+      (load-theme 'modus-vivendi t))
+  #+END_SRC
