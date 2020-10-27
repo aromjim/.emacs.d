@@ -5,3 +5,12 @@
   (setq straight-use-package-by-default t)
   (setq use-package-always-demand t)
   #+END_SRC
+
+* Appearance
+
+  Always create frames maximized.
+
+  #+BEGIN_SRC emacs-lisp
+    (add-to-list 'default-frame-alist
+		 '(fullscreen . maximized))
+  #+END_SRC
