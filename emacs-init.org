@@ -6,6 +6,14 @@
   (setq use-package-always-demand t)
   #+END_SRC
 
+* Dependencies
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package dash)
+    (use-package f)
+    (use-package s)
+  #+END_SRC
+
 * Appearance
 
   Always create frames maximized.
