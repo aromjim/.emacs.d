@@ -61,3 +61,14 @@
       ;; Include file at point when finding files
       (setq counsel-find-file-at-point t))
   #+END_SRC
+
+* PDF tools
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package pdf-tools
+      :magic ("%PDF" . pdf-view-mode)
+      :config
+      (pdf-tools-install)
+      ;; Use normal isearch
+      (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward))
+  #+END_SRC
