@@ -34,3 +34,11 @@
       ;; Enable Ivy completion everywhere
       (ivy-mode 1))
   #+END_SRC
+
+* Swiper
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package swiper
+      ;; Modify key binding for incremental search
+      :bind ("C-s" . swiper-isearch))
+  #+END_SRC
