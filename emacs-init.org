@@ -630,3 +630,15 @@
 				    (bmkp-bmenu-refresh-menu-list)
 				    (get-buffer "*Bookmark List*"))))
   #+END_SRC
+
+* Calendar
+
+  #+BEGIN_SRC emacs-lisp
+	;; Localize calendar to spanish
+	(setq calendar-week-start-day 1
+	      calendar-day-name-array ["domingo" "lunes" "martes" "miércoles"
+				       "jueves" "viernes" "sábado"]
+	      calendar-month-name-array ["enero" "febrero" "marzo" "abril" "mayo"
+					 "junio" "julio" "agosto" "septiembre"
+					 "octubre" "noviembre" "diciembre"])
+  #+END_SRC
