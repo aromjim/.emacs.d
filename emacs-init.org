@@ -700,3 +700,8 @@
      "/sudo:root@maimonides8.changeip.org:/etc/" 'tramp-server-repository)
     )
   #+END_SRC
+* Org
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package org)
+  #+END_SRC
