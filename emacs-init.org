@@ -23,6 +23,17 @@
 		 '(fullscreen . maximized))
   #+END_SRC
 
+* CUA mode
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package cua-base
+      :config
+      ;; Activate CUA mode
+      (cua-mode)
+      ;; Time to delay before overriding prefix key
+      (setq cua-prefix-override-inhibit-delay 0.5)
+  #+END_SRC
+
 * Modus theme
 
   #+BEGIN_SRC emacs-lisp
