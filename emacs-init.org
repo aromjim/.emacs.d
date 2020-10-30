@@ -716,3 +716,10 @@
   #+BEGIN_SRC emacs-lisp
     (use-package org)
   #+END_SRC
+
+* Miscellaneous
+
+  #+BEGIN_SRC emacs-lisp
+    ;; Activate Delete Selection mode
+    (delete-selection-mode)
+  #+END_SRC
