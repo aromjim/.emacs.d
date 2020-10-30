@@ -31,7 +31,7 @@
       ;; Activate CUA mode
       (cua-mode)
       ;; Time to delay before overriding prefix key
-      (setq cua-prefix-override-inhibit-delay 0.5)
+      (setq cua-prefix-override-inhibit-delay 0.5))
   #+END_SRC
 
 * Modus theme
