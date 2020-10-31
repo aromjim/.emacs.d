@@ -777,6 +777,37 @@
     (use-package markdown-mode)
   #+END_SRC
 
+* TRAMP
+
+  #+BEGIN_SRC emacs-lisp
+    ;; User emacs file to save server data
+    (defvar server-file "servers.private")
+
+    (defun read-server-file (&optional with-port-only)
+      (let* ((filename (locate-user-emacs-file server-file))
+	     (server-list (f-read-text filename 'utf-8))
+	     (servers (--map (s-split "[[:space:]]+" it)
+			     (s-split "\n" server-list t))))
+	(if with-port-only
+	    (--filter (= (length it) 3) servers)
+	  servers)))
+
+    (defun set-tramp-multi-hops ()
+      (let ((servers (read-server-file)))
+	(--each servers
+	  (let ((server (car it))
+		(username (cadr it)))
+	    (add-to-list 'tramp-default-proxies-alist
+			 (list server
+			       "root"
+			       (s-lex-format "/ssh:${username}@${server}:")))))))
+
+    (add-hook 'emacs-startup-hook #'set-tramp-multi-hops)
+
+    ;; Set global keybindings
+    (global-set-key (kbd "C-c c") 'tramp-cleanup-all-buffers)
+  #+END_SRC
+
 * Miscellaneous
 
   #+BEGIN_SRC emacs-lisp
