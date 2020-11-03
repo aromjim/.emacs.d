@@ -850,4 +850,7 @@
 
     ;; Visualize matching parens
     (show-paren-mode)
+
+    ;; Avoid cursor and mouse pointer clash
+    (mouse-avoidance-mode 'animate)
   #+END_SRC
