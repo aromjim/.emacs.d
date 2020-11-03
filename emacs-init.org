@@ -844,4 +844,7 @@
 
     ;; Column number in mode line
     (column-number-mode)
+
+    ;; Default value for automatic line-wrapping column
+    (setq-default fill-column 80)
   #+END_SRC
