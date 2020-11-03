@@ -853,4 +853,7 @@
 
     ;; Avoid cursor and mouse pointer clash
     (mouse-avoidance-mode 'animate)
+
+    ;; Save minibuffer history
+    (savehist-mode)
   #+END_SRC
