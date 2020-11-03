@@ -838,4 +838,7 @@
   #+BEGIN_SRC emacs-lisp
     ;; Activate Delete Selection mode
     (delete-selection-mode)
+
+    ;; Disable toolbar
+    (tool-bar-mode -1)
   #+END_SRC
