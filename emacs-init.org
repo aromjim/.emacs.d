@@ -841,4 +841,7 @@
 
     ;; Disable toolbar
     (tool-bar-mode -1)
+
+    ;; Column number in mode line
+    (column-number-mode)
   #+END_SRC
