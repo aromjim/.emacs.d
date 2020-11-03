@@ -862,4 +862,7 @@
 
     ;; A single space does end a sentence
     (setq-default sentence-end-double-space nil)
+
+    ;; Don't make a backup of a file the first time it is saved
+    (setq make-backup-files nil)
   #+END_SRC
