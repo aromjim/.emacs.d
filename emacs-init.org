@@ -60,6 +60,13 @@
     (setq dired-dwim-target t)
   #+END_SRC
 
+* Dired+
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package dired+
+      :straight dired-plus)
+  #+END_SRC
+
 * Ivy
 
   #+BEGIN_SRC emacs-lisp
