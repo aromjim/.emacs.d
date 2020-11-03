@@ -856,4 +856,10 @@
 
     ;; Save minibuffer history
     (savehist-mode)
+
+    ;; Activate Auto Fill in Text mode and related modes
+    (toggle-text-mode-auto-fill)
+
+    ;; A single space does end a sentence
+    (setq-default sentence-end-double-space nil)
   #+END_SRC
