@@ -833,6 +833,16 @@
     (global-set-key (kbd "C-c c") 'tramp-cleanup-all-buffers)
   #+END_SRC
 
+* Elpy
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package elpy
+      :init
+      (elpy-enable)
+      :config
+      (setq elpy-rpc-python-command "python3"))
+  #+END_SRC
+
 * Miscellaneous
 
   #+BEGIN_SRC emacs-lisp
