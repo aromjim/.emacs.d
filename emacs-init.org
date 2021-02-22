@@ -909,4 +909,8 @@
 
     ;; Allow remote directory-local variables
     (setq enable-remote-dir-locals t)
+
+    (use-package move-text
+      :config
+      (move-text-default-bindings))
   #+END_SRC
