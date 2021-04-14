@@ -67,6 +67,19 @@
       :straight dired-plus)
   #+END_SRC
 
+* Dired-x
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package dired-x
+      :straight nil
+      :config
+      ;; Alist of file regexps and their suggested commands
+      (setq dired-guess-shell-alist-user
+	    '(("^.*\\.odt$" "soffice")
+	      ("^.*\\.ps$" "evince")
+	      ("^.*\\.pdf$" "evince"))))
+  #+END_SRC
+
 * Ivy
 
   #+BEGIN_SRC emacs-lisp
