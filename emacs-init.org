@@ -905,6 +905,22 @@
     (auto-insert-mode 1))
   #+END_SRC
 
+* Google Translate
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package google-translate
+      :disabled)
+
+    (use-package google-translate-smooth-ui
+      :disabled
+      :straight nil
+      :bind ("C-c t" . google-translate-smooth-translate)
+      :config
+      (setq google-translate-translation-directions-alist
+	    '(("es" . "en") ("en" . "es")))
+      (setq google-translate-listen-program "cvlc"))
+  #+END_SRC
+
 * Miscellaneous
 
   #+BEGIN_SRC emacs-lisp
