@@ -796,6 +796,15 @@
       )
   #+END_SRC
 
+* ESS
+
+  #+BEGIN_SRC emacs-lisp
+     (use-package ess-site
+       :straight ess
+       :init
+       (setq ess-write-to-dribble nil))
+  #+END_SRC
+
 * Markdown mode
 
   #+BEGIN_SRC emacs-lisp
