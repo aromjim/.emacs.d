@@ -811,6 +811,15 @@
     (use-package markdown-mode)
   #+END_SRC
 
+* Polymode
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package polymode)
+
+    (use-package poly-R
+      :mode ("\\.Rnw\\'" . poly-noweb+R-mode))
+  #+END_SRC
+
 * TRAMP
 
   #+BEGIN_SRC emacs-lisp
