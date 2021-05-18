@@ -755,6 +755,10 @@
     (use-package org)
   #+END_SRC
 
+  #+BEGIN_SRC emacs-lisp
+    (use-package orgtbl-aggregate)
+  #+END_SRC
+
 * Ebib
 
   #+BEGIN_SRC emacs-lisp
