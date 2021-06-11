@@ -865,6 +865,8 @@
       :init
       (setq lsp-keymap-prefix "C-c l")
       :commands lsp)
+
+    (use-package lsp-ui)
   #+END_SRC
 
 * Elpy
