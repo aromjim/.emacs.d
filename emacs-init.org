@@ -864,9 +864,16 @@
     (use-package lsp-mode
       :init
       (setq lsp-keymap-prefix "C-c l")
+      :hook ((haskell-mode . lsp))
       :commands lsp)
 
     (use-package lsp-ui)
+  #+END_SRC
+
+* Haskell
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package lsp-haskell)
   #+END_SRC
 
 * Elpy
