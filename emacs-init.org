@@ -858,6 +858,15 @@
     (global-set-key (kbd "C-c c") 'tramp-cleanup-all-buffers)
   #+END_SRC
 
+* Language server protocol
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package lsp-mode
+      :init
+      (setq lsp-keymap-prefix "C-c l")
+      :commands lsp)
+  #+END_SRC
+
 * Elpy
 
   #+BEGIN_SRC emacs-lisp
