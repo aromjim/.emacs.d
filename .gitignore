@@ -10,3 +10,4 @@ straight/
 eshell/
 transient/
 /emacs-init.el
+/authinfo.gpg
