@@ -42,6 +42,36 @@
       (load-theme 'modus-vivendi t))
   #+END_SRC
 
+* Almacenamiento de credenciales
+
+  [[https://www.gnu.org/software/emacs/manual/html_node/auth/][Auth-source]] es una biblioteca integrada en Emacs y, según su documentación, es
+  una forma de que aplicaciones múltiples compartan una única configuración. El
+  uso principal de esta biblioteca es el almacenamiento de credenciales, de
+  manera que no haya que introducir estas una y otra vez.
+
+  La variable ~auth-sources~ contiene una lista con los distintos almacenes, por
+  defecto los ficheros =~/.authinfo=, =~/.authinfo.gpg= y =~/.netrc=.
+  Auth-source también se puede comunicar con el almacén de contraseñas del
+  sistema operativo.
+
+  Mi preferencia es guardar las credenciales en un fichero cifrado dentro de la
+  carpeta de configuración de Emacs del usuario.
+
+  #+begin_src emacs-lisp
+    (use-package auth-source
+      :config
+      (setq auth-sources (list (locate-user-emacs-file "authinfo.gpg"))))
+  #+end_src
+
+  El formato de las entradas en ese fichero es el siguiente:
+  #+begin_center
+  =machine= /servidor/ =login= /usuario/ =port= /puerto/ =password= /contraseña/
+  #+end_center
+
+  Para depurar posibles problemas de autenticación es conveniente establecer a
+  ~t~ la variable ~auth-source-debug~, volviéndola a establecer a ~nil~ una vez
+  resueltos los problemas.
+
 * Dired
 
   #+BEGIN_SRC emacs-lisp
