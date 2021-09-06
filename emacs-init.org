@@ -863,34 +863,80 @@
 
 * TRAMP
 
-  #+BEGIN_SRC emacs-lisp
-    ;; User emacs file to save server data
-    (defvar server-file "servers.private")
+  [[https://www.gnu.org/software/tramp/][ =TRAMP= ]] es una biblioteca, incluida como parte de Emacs desde la versión
+  22.1, para el acceso transparente a ficheros remotos. =TRAMP= permite usar
+  distintos protocolos de conexión, siendo el protocolo =ssh= el utilizado más
+  habitualmente, y habilita una interfaz para manejar ficheros remotos como si
+  fueran ficheros locales.
 
-    (defun read-server-file (&optional with-port-only)
+  =Emacs= permite definir [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Connection-Local-Variables.html][variables locales por conexión]], lo que resulta muy
+  útil para establecer, por ejemplo, el intérprete de órdenes a utilizar al
+  conectarse mediante =TRAMP= a cada ordenador remoto. El procedimiento consiste
+  en definir los perfiles adecuados mediante la función
+  =connection-local-set-profile-variables= para posteriormente asociarlos a las
+  conexiones pertinentes mediante la función =connection-local-set-profiles=.
+
+  #+begin_src emacs-lisp
+    (connection-local-set-profile-variables
+      'remote-bash
+      '((explicit-shell-file-name . "/bin/bash")))
+  #+end_src
+
+  Definiendo adecuadamente la variable =tramp-default-proxies-alist= se pueden
+  configurar [[https://www.gnu.org/software/tramp/#Multi_002dhops][conexiones multisalto]]. El valor de esa variable debe ser una lista
+  de triples ~(host user proxy)~, donde ~host~ es el ordenador al que queremos
+  conectarnos, ~user~ el usuario que realiza la conexión y ~proxy~ el ordenador
+  al que se realiza la conexión intermedia. En mi caso, uso esta
+  infraestructura para configurar accesos privilegiados a los servidores que
+  administro, conectándome mediante usuarios con capacidad =sudo=. Para ello,
+  ~host~ debe ser el servidor remoto, ~user~ debe ser =root= y ~proxy~ debe
+  definir la conexión no privilegiada con el usuario /sudoer/.
+
+  El fichero =servers.private= guardado en la carpeta de configuración de Emacs
+  contiene la información de cada servidor. El formato del mismo es una línea
+  por servidor, conteniendo cada una de ellas, separados por espacios o
+  tabuladores, el nombre o dirección IP del servidor, el nombre del usuario y la
+  interfaz de órdenes remota.
+
+  #+begin_src emacs-lisp
+    (defvar aromjim-server-file "servers.private"
+      "User emacs file to save server data")
+
+    (defun aromjim-read-server-file (server-file)
+      "Read server data from SERVER-FILE.
+
+    Provides a list of triples (SERVER USER SHELL) intended to be
+    used for configuring privileged connections to the servers."
       (let* ((filename (locate-user-emacs-file server-file))
-	     (server-list (f-read-text filename 'utf-8))
-	     (servers (--map (s-split "[[:space:]]+" it)
-			     (s-split "\n" server-list t))))
-	(if with-port-only
-	    (--filter (= (length it) 3) servers)
-	  servers)))
+	     (server-list (f-read-text filename 'utf-8)))
+	(--map (s-split "[[:space:]]+" it)
+	       (s-split "\n" server-list t))))
 
-    (defun set-tramp-multi-hops ()
-      (let ((servers (read-server-file)))
+    (defun aromjim-set-tramp-multi-hops ()
+      "Configure privileged connections to servers.
+
+    It does so by setting multi-hop connections, using the
+    information provided by ‘aromjim-read-server-file’."
+      (let ((servers (aromjim-read-server-file aromjim-server-file)))
 	(--each servers
-	  (let ((server (car it))
-		(username (cadr it)))
+	  (let ((server (nth 0 it))
+		(username (nth 1 it))
+		(shell (nth 2 it)))
 	    (add-to-list 'tramp-default-proxies-alist
 			 (list server
 			       "root"
-			       (s-lex-format "/ssh:${username}@${server}:")))))))
+			       (s-lex-format "/ssh:${username}@${server}:")))
+	    (connection-local-set-profiles
+	     `(:application tramp :machine ,server)
+	     (intern (concat "remote-" shell)))))))
 
-    (add-hook 'emacs-startup-hook #'set-tramp-multi-hops)
+    ;; Configure privileged connections to servers at emacs startup
+    (add-hook 'emacs-startup-hook #'aromjim-set-tramp-multi-hops)
 
-    ;; Set global keybindings
+    ;; Set global keybinding for cleaning out all connections
+    ;; and killing related buffers
     (global-set-key (kbd "C-c c") 'tramp-cleanup-all-buffers)
-  #+END_SRC
+  #+end_src
 
 * Elpy
 
