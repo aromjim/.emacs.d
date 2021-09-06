@@ -37,7 +37,7 @@
 * Modus theme
 
   #+BEGIN_SRC emacs-lisp
-    (use-package modus-vivendi-theme
+    (use-package modus-themes
       :config
       (load-theme 'modus-vivendi t))
   #+END_SRC
